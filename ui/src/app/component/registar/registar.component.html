@@ -1,0 +1,54 @@
+<div class="registration-container">
+    <h2>Registracija</h2>
+    <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+      <div class="form-group">
+        <label for="firstName">Ime:</label>
+        <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="FirstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Prezime:</label>
+        <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="SecondName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="Email" required email>
+      </div>
+      <div class="form-group">
+        <label for="password">Lozinka:</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="Pass" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Registruj se</button>
+      <div class="form-group">
+        <label for="userId">ID korisnika za brisanje:</label>
+        <input type="text" id="userId" name="userId" class="form-control" [(ngModel)]="UserIdToDelete">
+      </div>
+  
+      <!-- Dugme za brisanje korisnika -->
+      <button type="button" class="btn btn-danger" (click)="onDeleteUser()">Izbriši korisnika</button>
+    </form>
+  </div>
+  <div class="registration-container">
+    <h2>Registracija</h2>
+  
+    <!-- Tabela za prikaz korisnika -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Email</th>
+          <th>Lozinka</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.ID }}</td>
+          <td>{{ user.FirstName }}</td>
+          <td>{{ user.SecondName }}</td>
+          <td>{{ user.Email }}</td>
+          <td>{{ user.Pass }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
